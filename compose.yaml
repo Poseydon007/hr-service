@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: hr-service-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: hr_service
+      MYSQL_USER: hr_app
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --innodb-buffer-pool-size=256M
+      - --max-connections=50
+    volumes:
+      - ./db:/var/lib/mysql
+    secrets:
+      - db_password
+    networks:
+      - internal
+    mem_limit: 512m
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hr-service-app:latest
+    container_name: hr-service-app
+    restart: unless-stopped
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - internal
+      - frappe_docker_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=frappe_docker_default
+      # HTTPS — hr.trueast-irp.cloud
+      - traefik.http.routers.hr-service.rule=Host(`hr.trueast-irp.cloud`)
+      - traefik.http.routers.hr-service.entrypoints=websecure
+      - traefik.http.routers.hr-service.tls=true
+      - traefik.http.routers.hr-service.tls.certresolver=main-resolver
+      - traefik.http.services.hr-service.loadbalancer.server.port=3000
+      # HTTP → HTTPS redirect
+      - traefik.http.routers.hr-service-http.rule=Host(`hr.trueast-irp.cloud`)
+      - traefik.http.routers.hr-service-http.entrypoints=web
+      - traefik.http.routers.hr-service-http.middlewares=redirect-to-https
+    mem_limit: 512m
+
+secrets:
+  db_password:
+    file: ./db_password.txt
+
+networks:
+  internal:
+    name: hr-service-internal
+  frappe_docker_default:
+    external: true

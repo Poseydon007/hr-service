@@ -1,0 +1,32 @@
+{
+  "name": "hr-service",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev": "tsx server/index.ts",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "seed": "node dist/seed.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.41.0",
+    "mysql2": "^3.14.0",
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "bcryptjs": "^3.0.2",
+    "uuid": "^11.1.0",
+    "zod": "^3.25.23"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/uuid": "^10.0.0",
+    "@types/node": "^22.15.17",
+    "drizzle-kit": "^0.31.0",
+    "esbuild": "^0.25.4",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
