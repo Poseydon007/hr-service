@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#apikey::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 @layer base {
   * {
     box-sizing: border-box;

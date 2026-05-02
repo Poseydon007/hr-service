@@ -48,7 +48,8 @@ export default function Login() {
             <div>
               <label
                 htmlFor="apikey"
-                className="block text-sm font-medium text-gray-700 mb-1.5"
+                className="block text-sm font-medium mb-1.5"
+                style={{ color: "#ffffff" }}
               >
                 Admin API Key
               </label>
@@ -61,8 +62,12 @@ export default function Login() {
                   setError("");
                 }}
                 placeholder="Paste your admin API key here…"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-transparent resize-none"
-                style={{ "--tw-ring-color": "#c9a84c" } as React.CSSProperties}
+                className="w-full rounded-lg border border-white/30 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:border-transparent resize-none"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.25)",
+                  color: "#ffffff",
+                  caretColor: "#ffffff",
+                } as React.CSSProperties}
                 onFocus={(e) =>
                   (e.currentTarget.style.boxShadow = "0 0 0 2px #c9a84c")
                 }
