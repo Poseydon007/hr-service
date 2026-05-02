@@ -52,8 +52,8 @@ app.get("/v1", (_req, res) => {
 const publicDir = join(__dirname, "public");
 if (existsSync(publicDir)) {
   app.use(express.static(publicDir));
-  // SPA fallback — only for non-API, non-health routes
-  app.get("*", (req, res, next) => {
+  // SPA fallback — Express 5 uses '/{*splat}' not '*'
+  app.get("/{*splat}", (req, res, next) => {
     if (req.path.startsWith("/v1") || req.path.startsWith("/health")) {
       return next();
     }
