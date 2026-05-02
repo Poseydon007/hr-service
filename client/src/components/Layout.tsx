@@ -1,9 +1,36 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
+const icons: Record<string, JSX.Element> = {
+  dashboard: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <rect x="3" y="3" width="7" height="7" rx="1" />
+      <rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <rect x="14" y="14" width="7" height="7" rx="1" />
+    </svg>
+  ),
+  employees: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <circle cx="9" cy="7" r="3" />
+      <path d="M3 21v-2a5 5 0 0 1 5-5h2" />
+      <circle cx="17" cy="11" r="3" />
+      <path d="M13 21v-2a4 4 0 0 1 8 0v2" />
+    </svg>
+  ),
+  keys: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <circle cx="8" cy="15" r="4" />
+      <path d="M12 11l8-8" />
+      <path d="M17 3l3 3" />
+      <path d="M19 7l2-2" />
+    </svg>
+  ),
+};
+
 const navLinks = [
-  { to: "/", label: "Dashboard", icon: "⊞" },
-  { to: "/employees", label: "Employees", icon: "👥" },
-  { to: "/keys", label: "API Keys", icon: "🔑" },
+  { to: "/", label: "Dashboard", iconKey: "dashboard" },
+  { to: "/employees", label: "Employees", iconKey: "employees" },
+  { to: "/keys", label: "API Keys", iconKey: "keys" },
 ];
 
 export default function Layout() {
@@ -35,7 +62,7 @@ export default function Layout() {
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-1">
-          {navLinks.map(({ to, label, icon }) => (
+          {navLinks.map(({ to, label, iconKey }) => (
             <NavLink
               key={to}
               to={to}
@@ -48,7 +75,7 @@ export default function Layout() {
                 }`
               }
             >
-              <span className="text-base">{icon}</span>
+              {icons[iconKey]}
               {label}
             </NavLink>
           ))}
