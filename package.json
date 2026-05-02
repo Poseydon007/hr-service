@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "dev": "tsx server/index.ts",
+    "dev:ui": "vite",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "seed": "node dist/seed.mjs"
@@ -24,9 +25,19 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/uuid": "^10.0.0",
     "@types/node": "^22.15.17",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
     "drizzle-kit": "^0.31.0",
     "esbuild": "^0.25.4",
+    "postcss": "^8.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.30.1",
+    "tailwindcss": "^3.4.17",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^6.3.4"
   }
 }

@@ -6,9 +6,10 @@ RUN corepack enable
 COPY package.json ./
 RUN npm install
 
-COPY tsconfig.json drizzle.config.ts ./
+COPY tsconfig.json drizzle.config.ts vite.config.ts tailwind.config.js postcss.config.js ./
 COPY drizzle ./drizzle
 COPY server ./server
+COPY client ./client
 
 RUN npm run build
 
@@ -20,6 +21,7 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 COPY --from=builder /app/dist          ./dist
+COPY --from=builder /app/dist/public   ./dist/public
 COPY --from=builder /app/node_modules  ./node_modules
 COPY --from=builder /app/package.json  ./package.json
 COPY seed.mjs ./seed.mjs
