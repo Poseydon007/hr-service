@@ -22,8 +22,9 @@ export default function Login() {
       className="relative min-h-screen flex items-center justify-center"
       style={{
         backgroundImage: "url('/login-bg.jpg')",
-        backgroundSize: "cover",
+        backgroundSize: "70%",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Dark overlay */}
