@@ -24,14 +24,12 @@ export default function Login() {
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Header */}
           <div
-            className="px-8 py-8 text-center"
+            className="px-8 py-8 flex flex-col items-center"
             style={{ backgroundColor: "#0f2044" }}
           >
-            <h1 className="text-2xl font-bold text-white tracking-wide">
-              True East HR
-            </h1>
-            <p className="mt-1 text-sm font-medium" style={{ color: "#c9a84c" }}>
-              Admin Portal
+            <img src="/logo-white.png" alt="True East" className="w-32 mb-3 opacity-95" />
+            <p className="text-sm font-medium tracking-widest uppercase" style={{ color: "#c9a84c" }}>
+              HR Admin Portal
             </p>
           </div>
 

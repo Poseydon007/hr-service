@@ -26,12 +26,10 @@ export default function Layout() {
         style={{ backgroundColor: "#0f2044" }}
       >
         {/* Logo */}
-        <div className="px-5 py-6 border-b border-white/10">
-          <div className="text-xl font-bold tracking-wide" style={{ color: "#c9a84c" }}>
-            True East
-          </div>
-          <div className="text-xs text-white/60 mt-0.5 tracking-widest uppercase">
-            HR Admin
+        <div className="px-5 py-5 border-b border-white/10 flex flex-col items-center">
+          <img src="/logo-white.png" alt="True East" className="w-28 opacity-95" />
+          <div className="text-xs text-white/50 mt-2 tracking-widest uppercase">
+            HR Portal
           </div>
         </div>
 
