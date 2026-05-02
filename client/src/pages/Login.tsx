@@ -28,14 +28,14 @@ export default function Login() {
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0" style={{ backgroundColor: "rgba(15,32,68,0.55)" }} />
-      <div className="w-full max-w-md relative z-10">
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(15,32,68,0.15)" }} />
+      <div className="w-full max-w-md relative z-10" style={{ transform: "translateX(-3cm)" }}>
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="rounded-2xl shadow-lg overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(6px)" }}>
           {/* Header */}
           <div
             className="px-8 py-8 flex flex-col items-center"
-            style={{ backgroundColor: "#0f2044" }}
+            style={{ backgroundColor: "rgba(15,32,68,0.15)" }}
           >
             <img src="/logo-white.png" alt="True East" className="w-32 mb-3 opacity-95" />
             <p className="text-sm font-medium tracking-widest uppercase" style={{ color: "#c9a84c" }}>
