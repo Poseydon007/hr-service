@@ -18,8 +18,17 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <div className="w-full max-w-md">
+    <div
+      className="relative min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: "url('/login-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(15,32,68,0.55)" }} />
+      <div className="w-full max-w-md relative z-10">
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Header */}
